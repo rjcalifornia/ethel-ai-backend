@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('client_id');
             $table->string('api_key');
             $table->unsignedInteger('role_id');
-            $table->boolean('active');;
+            $table->boolean('active');
             $table->timestamps();
         });
     }
