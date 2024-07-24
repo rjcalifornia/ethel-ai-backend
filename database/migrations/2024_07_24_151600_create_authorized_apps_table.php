@@ -12,7 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('authorized_apps', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('name');
+            $table->string('client_id');
+            $table->string('api_key');
+            $table->unsignedInteger('role_id');
+            $table->boolean('active');;
             $table->timestamps();
         });
     }
