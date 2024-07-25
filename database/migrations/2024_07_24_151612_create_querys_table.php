@@ -14,8 +14,11 @@ return new class extends Migration
         Schema::create('querys', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('app_id');
-            $table->text('query');
-            $table->decimal('tokens_used', 14, 4);
+            $table->text('prompt');
+            $table->text('model_response');
+            $table->decimal('prompt_token_count', 14, 4);
+            $table->decimal('response_token_count', 14, 4);
+            $table->decimal('total_tokens_used', 14, 4);
             $table->timestamps();
         });
     }
