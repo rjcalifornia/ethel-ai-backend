@@ -19,6 +19,7 @@ return new class extends Migration
             $table->decimal('prompt_token_count', 14, 4);
             $table->decimal('response_token_count', 14, 4);
             $table->decimal('total_tokens_used', 14, 4);
+            $table->string('model_name');
             $table->timestamps();
         });
     }
