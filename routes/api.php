@@ -11,6 +11,6 @@ Route::get('/user', function (Request $request) {
 
 Route::prefix('/v1/ethel-ia')->group(function () {
     Route::post('/procesar-consulta', [MainController::class, 'promptQuery']);
-    Route::post('/gemma2/procesar-consulta', [MainController::class, 'gemmaLargeModel']);
-    Route::post('/tinyllama/procesar-consulta', [MainController::class, 'promptQuery']);
+    Route::post('/full/procesar-consulta', [MainController::class, 'gemmaLargeModel']);
+    Route::post('/tiny/procesar-consulta', [MainController::class, 'promptQuery']);
 });
