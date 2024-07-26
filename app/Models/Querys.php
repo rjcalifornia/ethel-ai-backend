@@ -18,6 +18,7 @@ class Querys extends Model
         'prompt_token_count',
         'response_token_count',
         'total_tokens_used',
+        'model_name',
     ];
 
     public function appId(){
