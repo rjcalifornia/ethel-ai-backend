@@ -15,7 +15,7 @@ Route::get('/user', function (Request $request) {
 Route::prefix('/v1/ethel-ia')->group(function () {
     Route::post('/procesar-consulta', [MainController::class, 'promptQuery']);
     Route::post('/full/procesar-consulta', [MainController::class, 'ethelLargeModel'])->middleware(AppValidation::class);
-    Route::post('/basic/procesar-consulta', [MainController::class, 'ethelBasicModel']);
+    Route::post('/basic/procesar-consulta', [MainController::class, 'ethelBasicModel'])->middleware(AppValidation::class);
 });
 
 Route::prefix('/v1/administration')->group(function(){
