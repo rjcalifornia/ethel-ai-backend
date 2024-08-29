@@ -16,8 +16,9 @@ class AppValidation
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $header = $request->header('Authorization');
-        $authorized = $this->validate($header);
+        $clientId = $request->header('Client');
+        $apiKey = $request->header('Authorization');
+        $authorized = $this->validate($clientId, $apiKey);
         if(!$authorized){
             return response()->json(["message" => "Hubo un problema al procesar su solicitud."],401);
         }
@@ -26,13 +27,16 @@ class AppValidation
         return $next($request);
     }
 
-    public function validate($header){
-        $app = AuthorizedApps::where('api_key', $header)->where('active', true)->first();
+    public function validate($clientId, $apiKey){
+       // $app = AuthorizedApps::where('api_key', $header)->where('active', true)->first();
+       $app = AuthorizedApps::where('client_id', $clientId)->where('active', true)->first();
 
-        if($app){
-            return true;
-        }
-
+       if (! $app || ! password_verify($apiKey, $app->api_key)) {
+        //return response()->json(['message' => 'Verifique los datos ingresados e intente nuevamente'], 401);
         return false;
+    }
+
+        
+        return true;
     }
 }

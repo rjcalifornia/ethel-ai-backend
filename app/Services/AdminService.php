@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Services;
@@ -22,7 +21,7 @@ class AdminService
                 $app->client_id = $clientId;
                 $app->api_key = bcrypt($apiKey);
                 $app->active = true;
-                $app->id_rol = 1;
+                $app->role_id = 1;
                 $app->save();
               
             });

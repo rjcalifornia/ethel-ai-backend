@@ -19,6 +19,12 @@ class AdminController extends Controller
             'name' => 'required|string',
         ]);
         
+        if ($validator->fails()) {
+            return response()->json(['message' => 'No se puede procesar la solicitud. Faltan campos'], 422);
+        }
 
+        $app = $this->adminService->create($request);
+
+        return response()->json([$app]);
     }
 }
