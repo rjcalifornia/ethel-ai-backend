@@ -9,7 +9,7 @@ servers:
     description: local server
 
 paths:
-  /v1/ethel-ai/full/procesar-consulta:
+  /v1/ethel-ia/full/procesar-consulta:
     post:
       summary: Procesamiento de consulta con Ethel AI
       description: Realiza el procesamiento completo de una consulta utilizando el modelo Ethel AI. 
@@ -21,5 +21,22 @@ paths:
             schema:
               type: object
               properties:
-                consulta:
+                pregunta:
                   type: string
+        responses:
+          '200': 
+            description: La respuesta a la consulta hecha a la AI
+            content:
+              application/json:
+                schema: 
+                  type: array
+                  items: 
+                    type: string
+          '401': 
+            description: No esta autorizado para consumir la API
+            content:
+              application/json:
+                schema: 
+                  type: array
+                  items: 
+                    type: string
