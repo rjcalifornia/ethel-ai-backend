@@ -29,4 +29,9 @@ class PromptService
            }
 
     }
+
+    public function tokenCount(){
+        
+    }
+    
 }

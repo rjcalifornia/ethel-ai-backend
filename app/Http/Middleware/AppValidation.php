@@ -23,6 +23,7 @@ class AppValidation
             return response()->json(["message" => "Hubo un problema al procesar su solicitud."], 401);
         }
 
+        $request->merge(['client_id' => $clientId]);
 
         return $next($request);
     }
