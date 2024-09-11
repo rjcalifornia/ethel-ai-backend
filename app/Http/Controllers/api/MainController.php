@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\AuthorizedApps;
 use App\Models\Querys;
 use App\Services\PromptService;
 use Illuminate\Support\Facades\Validator;
@@ -56,7 +57,8 @@ class MainController extends Controller
                 'stream' => false
             ]);
 
-            $this->promptService->registerPromptResults($request, $respuesta, config("ai.app_model_name"));
+            $app = AuthorizedApps::where('client_id', $request->get('client_id'))->first();
+            $this->promptService->registerPromptResults($request, $respuesta, config("ai.app_model_name"), $app);
 
             return response()->json(["respuesta" => $respuesta["response"]], 200);
         } catch (\Throwable $th) {
@@ -80,8 +82,8 @@ class MainController extends Controller
                 'prompt' => $request->get('pregunta'),
                 'stream' => false
             ]);
-
-            $this->promptService->registerPromptResults($request, $respuesta, config("ai.basic_model_name"));
+            $app = AuthorizedApps::where('client_id', $request->get('client_id'))->first();
+            $this->promptService->registerPromptResults($request, $respuesta, config("ai.basic_model_name"), $app);
 
             return response()->json(["respuesta" => $respuesta["response"]], 200);
         } catch (\Throwable $th) {

@@ -2,9 +2,11 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\AppTokens;
 use App\Models\AuthorizedApps;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 
 class AppValidation
@@ -36,6 +38,11 @@ class AppValidation
             return false;
         }
 
+        $appTokens = AppTokens::where('app_id', $app->id)->where('active', true)->first();
+ 
+        if($appTokens->tokens_allocated < 20){
+            return false;
+        }
 
         return true;
     }
