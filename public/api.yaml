@@ -1,0 +1,25 @@
+openapi: 3.0.0
+info:
+  title: Ethel AI API
+  description: Documentacion para consumir los servicios de Ethel AI
+  version: 0.1.9
+
+servers:
+  - url: http://localhost:8000/api
+    description: local server
+
+paths:
+  /v1/ethel-ai/full/procesar-consulta:
+    post:
+      summary: Procesamiento de consulta con Ethel AI
+      description: Realiza el procesamiento completo de una consulta utilizando el modelo Ethel AI. 
+      tags:
+        - EthelAI
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                consulta:
+                  type: string
