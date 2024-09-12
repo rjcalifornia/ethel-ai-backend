@@ -13,7 +13,7 @@
 1. Clonar este repositorio
 2. Crear una base de datos en limpio
 3. Copiar archivo ``` .env.example ```  como ``` .env ``` y configurar la base de datos
-4. Con la consola de comandos (CLI), ir a la carpeta root del sistema y ejecutar el comando composer install
+4. Con la consola de comandos (CLI), ir a la carpeta root del sistema y ejecutar el comando  ``` composer install  ``` 
 5. Generar la llave de la app: ``` php artisan key:generate ```
 6. Ejecutar ``` php artisan migrate ``` para generar las tablas
 
