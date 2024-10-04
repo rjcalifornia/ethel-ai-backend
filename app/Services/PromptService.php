@@ -7,6 +7,7 @@ use Carbon\Carbon;
 
 use App\Models\Querys;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 
 
 class PromptService
@@ -41,5 +42,18 @@ class PromptService
     public function tokenCount(){
         
     }
+
+    public function actionAi($request, ){
+        $actions = ['envia', 'Envia', 'correo', 'felicita', 'jefe'];
+
+        $detectAction = Str::contains($request->get('pregunta'), $actions);
+
+        if($detectAction){
+            return true;
+        }
+
+        return false;
+    }
+    
     
 }

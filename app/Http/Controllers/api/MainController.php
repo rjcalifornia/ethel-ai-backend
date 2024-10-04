@@ -50,6 +50,12 @@ class MainController extends Controller
             return response()->json(['message' => 'No se puede procesar la solicitud. Faltan campos'], 422);
         }
 
+        $isAction = $this->promptService->actionAi($request);
+
+        if($isAction){
+            
+        }
+
         try {
             $respuesta = Http::timeout(495)->post(config("ai.model_url") . '/api/generate', [
                 'model' => config("ai.app_model_name"),
