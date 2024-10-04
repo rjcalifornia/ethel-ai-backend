@@ -53,7 +53,7 @@ class MainController extends Controller
         $isAction = $this->promptService->actionAi($request);
 
         if($isAction){
-            
+            return response()->json(["respuesta" => "Se ha detectado que desea que el modelo realice una acción. El Large Action Model procederá a ejecutarla."], 200);
         }
 
         try {

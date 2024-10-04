@@ -44,7 +44,7 @@ class PromptService
     }
 
     public function actionAi($request, ){
-        $actions = ['envia', 'Envia', 'correo', 'felicita', 'jefe'];
+        $actions = ['envia correo', 'escribe un correo', 'felicitando', 'jefe'];
 
         $detectAction = Str::contains($request->get('pregunta'), $actions);
 
